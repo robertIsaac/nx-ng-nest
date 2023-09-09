@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/ng",
+        "outputPath": "dist/ng/browser",
         "index": "apps/ng/src/index.html",
         "main": "apps/ng/src/main.ts",
         "polyfills": ["zone.js"],
@@ -93,6 +93,64 @@
           "codeCoverage": true
         }
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/ng/server",
+        "main": "apps/ng/server.ts",
+        "tsConfig": "apps/ng/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/ng/src/environments/environment.ts",
+              "with": "apps/ng/src/environments/environment.development.ts"
+            }
+          ],
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "ng:build:development",
+          "serverTarget": "ng:server:development"
+        },
+        "production": {
+          "browserTarget": "ng:build:production",
+          "serverTarget": "ng:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "ng:build:production",
+          "serverTarget": "ng:server:production"
+        },
+        "development": {
+          "browserTarget": "ng:build:development",
+          "serverTarget": "ng:server:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
