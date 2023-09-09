@@ -5,9 +5,7 @@
   "scripts": {
     "start": "nx run-many --target=serve",
     "build": "nx build ng && nx server ng && nx build nest",
-    "dev:ssr": "nx run ng:serve-ssr --proxy-config=apps/ng/proxy.conf.json",
-    "serve:ssr": "node dist/ng/server/main.js",
-    "serve:nest": "node dist/nest/main.js"
+    "dev:ssr": "nx run ng:serve-ssr --proxy-config=apps/ng/proxy.conf.json"
   },
   "private": true,
   "dependencies": {
