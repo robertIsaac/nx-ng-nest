@@ -30,4 +30,3 @@ jobs:
         displayName: Run test
       - script: npx nx affected --base=$(BASE_SHA) --head=$(HEAD_SHA) --target=build --parallel=3
         displayName: Run build
-
