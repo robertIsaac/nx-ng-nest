@@ -1,7 +1,7 @@
 {
   "name": "nest",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "nest/src",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nest/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -12,11 +12,11 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/nest",
-        "main": "nest/src/main.ts",
-        "tsConfig": "nest/tsconfig.app.json",
-        "assets": ["nest/src/assets"],
+        "main": "apps/nest/src/main.ts",
+        "tsConfig": "apps/nest/tsconfig.app.json",
+        "assets": ["apps/nest/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "nest/webpack.config.js"
+        "webpackConfig": "apps/nest/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -42,14 +42,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["nest/**/*.ts"]
+        "lintFilePatterns": ["apps/nest/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "nest/jest.config.ts",
+        "jestConfig": "apps/nest/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
