@@ -28,7 +28,7 @@ jobs:
         displayName: Run lint
       - script: npx nx affected --base=$(BASE_SHA) --head=$(HEAD_SHA) --target=test --parallel=3 --ci --code-coverage
         displayName: Run test
-      - script: npx nx affected --base=$(BASE_SHA) --head=$(HEAD_SHA) --target=build --parallel=3
+      - script: npx nx run-many --target=build --parallel=3
         displayName: Run build
       - publish: $(System.DefaultWorkingDirectory)/dist/ng/browser
         artifact: WebApp
