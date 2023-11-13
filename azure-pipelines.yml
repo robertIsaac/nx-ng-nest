@@ -2,6 +2,7 @@ name: CI
 
 trigger:
   - master
+  - test
 
 variables:
   CI: 'true'
@@ -20,6 +21,8 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      - script: echo $(NX_BRANCH)
+      - script: echo $(BASE_SHA)
       - script: npm ci
         displayName: NPM Install Dependencies
       - script: npx nx-cloud record -- npx nx format:check --base=$(BASE_SHA) --head=$(HEAD_SHA)
